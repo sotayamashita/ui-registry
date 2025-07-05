@@ -12,8 +12,5 @@
       "mcp__deepwiki__ask_question"
     ]
   },
-  "enabledMcpjsonServers": [
-    "playwright",
-    "deepwiki"
-  ]
+  "enabledMcpjsonServers": ["playwright", "deepwiki"]
 }

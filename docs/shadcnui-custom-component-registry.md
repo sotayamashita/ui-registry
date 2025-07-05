@@ -92,6 +92,7 @@ npx shadcn@latest init
 Tailwind CSS v4では、設定はCSSファイル内で直接行います。`src/app/globals.css` または Tailwind をインポートしているCSSファイルを更新して、registryディレクトリのコンポーネントを認識させます：
 
 ##### src pattern を使用する場合
+
 ```css
 @import "tailwindcss";
 
@@ -109,6 +110,7 @@ Tailwind CSS v4では、設定はCSSファイル内で直接行います。`src/
 ```
 
 ##### src pattern を使用しない場合
+
 ```css
 @import "tailwindcss";
 
@@ -129,8 +131,9 @@ Tailwind CSS v4では、設定はCSSファイル内で直接行います。`src/
 `tailwind.config.ts` を更新します：
 
 ##### src pattern を使用する場合
+
 ```ts
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -139,12 +142,13 @@ module.exports = {
     "./src/registry/**/*.{js,ts,jsx,tsx,mdx}", // 追加
   ],
   // ... 他の設定
-}
+};
 ```
 
 ##### src pattern を使用しない場合
+
 ```ts
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -153,7 +157,7 @@ module.exports = {
     "./registry/**/*.{js,ts,jsx,tsx,mdx}", // 追加
   ],
   // ... 他の設定
-}
+};
 ```
 
 ### 3. レジストリプレビューページの作成（オプション）
@@ -163,23 +167,25 @@ module.exports = {
 開発中のコンポーネントをプレビューするためのページを作成：
 
 #### src pattern を使用する場合
+
 ```tsx
 // src/app/registry/[component]/page.tsx
-import dynamic from 'next/dynamic'
-import { notFound } from 'next/navigation'
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
 
 export default function ComponentPreview({
   params,
 }: {
-  params: { component: string }
+  params: { component: string };
 }) {
   try {
     // 動的にコンポーネントをインポート
     const Component = dynamic(
-      () => import(`@/registry/new-york/${params.component}/${params.component}`),
-      { ssr: false }
-    )
-    
+      () =>
+        import(`@/registry/new-york/${params.component}/${params.component}`),
+      { ssr: false },
+    );
+
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold mb-8">{params.component}</h1>
@@ -187,31 +193,33 @@ export default function ComponentPreview({
           <Component />
         </div>
       </div>
-    )
+    );
   } catch (error) {
-    notFound()
+    notFound();
   }
 }
 ```
 
 #### src pattern を使用しない場合
+
 ```tsx
 // app/registry/[component]/page.tsx
-import dynamic from 'next/dynamic'
-import { notFound } from 'next/navigation'
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
 
 export default function ComponentPreview({
   params,
 }: {
-  params: { component: string }
+  params: { component: string };
 }) {
   try {
     // 動的にコンポーネントをインポート
     const Component = dynamic(
-      () => import(`@/registry/new-york/${params.component}/${params.component}`),
-      { ssr: false }
-    )
-    
+      () =>
+        import(`@/registry/new-york/${params.component}/${params.component}`),
+      { ssr: false },
+    );
+
     return (
       <div className="container mx-auto p-8">
         <h1 className="text-3xl font-bold mb-8">{params.component}</h1>
@@ -219,9 +227,9 @@ export default function ComponentPreview({
           <Component />
         </div>
       </div>
-    )
+    );
   } catch (error) {
-    notFound()
+    notFound();
   }
 }
 ```
@@ -254,10 +262,7 @@ export default function ComponentPreview({
         "class-variance-authority",
         "clsx"
       ],
-      "registryDependencies": [
-        "button",
-        "input"
-      ],
+      "registryDependencies": ["button", "input"],
       "cssVars": {
         "light": {
           "--my-component-bg": "hsl(0 0% 100%)",
@@ -297,10 +302,7 @@ export default function ComponentPreview({
         "class-variance-authority",
         "clsx"
       ],
-      "registryDependencies": [
-        "button",
-        "input"
-      ],
+      "registryDependencies": ["button", "input"],
       "cssVars": {
         "light": {
           "--my-component-bg": "hsl(0 0% 100%)",
@@ -326,12 +328,11 @@ export default function ComponentPreview({
 
 ```tsx
 // src/registry/new-york/my-component/my-component.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-export interface MyComponentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "secondary"
+export interface MyComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "secondary";
 }
 
 const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
@@ -342,16 +343,16 @@ const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
         className={cn(
           "rounded-lg border p-4",
           variant === "secondary" && "bg-secondary",
-          className
+          className,
         )}
         {...props}
       />
-    )
-  }
-)
-MyComponent.displayName = "MyComponent"
+    );
+  },
+);
+MyComponent.displayName = "MyComponent";
 
-export { MyComponent }
+export { MyComponent };
 ```
 
 ### src pattern を使用しない場合
@@ -360,12 +361,11 @@ export { MyComponent }
 
 ```tsx
 // registry/new-york/my-component/my-component.tsx
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
-export interface MyComponentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "secondary"
+export interface MyComponentProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: "default" | "secondary";
 }
 
 const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
@@ -376,16 +376,16 @@ const MyComponent = React.forwardRef<HTMLDivElement, MyComponentProps>(
         className={cn(
           "rounded-lg border p-4",
           variant === "secondary" && "bg-secondary",
-          className
+          className,
         )}
         {...props}
       />
-    )
-  }
-)
-MyComponent.displayName = "MyComponent"
+    );
+  },
+);
+MyComponent.displayName = "MyComponent";
 
-export { MyComponent }
+export { MyComponent };
 ```
 
 ## 依存関係の指定
@@ -445,11 +445,13 @@ npx shadcn@latest build
 ```
 
 このコマンドは：
+
 - `registry.json` を読み込む
 - 各コンポーネントのインポートパスを変換
 - `public/r/` ディレクトリにJSONファイルを生成
 
 ビルドオプション：
+
 ```bash
 # 出力ディレクトリを指定
 npx shadcn@latest build –output dist/registry
@@ -467,6 +469,7 @@ npm run dev
 ```
 
 生成されたファイルの確認：
+
 - コンポーネントJSON: `http://localhost:3000/r/my-component.json`
 - プレビューページ: `http://localhost:3000/registry/my-component`
 
@@ -486,6 +489,7 @@ npx shadcn@latest add http://localhost:3000/r/component1.json http://localhost:3
 ### 5. 本番環境へのデプロイ
 
 #### Vercelの場合
+
 ```json
 // vercel.json
 {
@@ -504,23 +508,24 @@ npx shadcn@latest add http://localhost:3000/r/component1.json http://localhost:3
 ```
 
 #### Next.js の設定
+
 ```js
 // next.config.js
 module.exports = {
   async headers() {
     return [
       {
-        source: '/r/:path*',
+        source: "/r/:path*",
         headers: [
           {
-            key: 'Access-Control-Allow-Origin',
-            value: '*',
+            key: "Access-Control-Allow-Origin",
+            value: "*",
           },
         ],
       },
-    ]
+    ];
   },
-}
+};
 ```
 
 ## スタイルシステム
@@ -600,6 +605,7 @@ npm run registry:watch
 ```
 
 #### src pattern を使用しない場合
+
 ```json
 {
   "scripts": {
@@ -644,77 +650,78 @@ npx storybook@latest init
 
 ```tsx
 // src/registry/new-york/my-component/my-component.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react'
-import { MyComponent } from './my-component'
+import type { Meta, StoryObj } from "@storybook/react";
+import { MyComponent } from "./my-component";
 
 const meta = {
-  title: 'Registry/MyComponent',
+  title: "Registry/MyComponent",
   component: MyComponent,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'secondary'],
+      control: "select",
+      options: ["default", "secondary"],
     },
   },
-} satisfies Meta<typeof MyComponent>
+} satisfies Meta<typeof MyComponent>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Hello World',
+    children: "Hello World",
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary Variant',
+    variant: "secondary",
+    children: "Secondary Variant",
   },
-}
+};
 ```
 
 ##### src pattern を使用しない場合
+
 ```tsx
 // registry/new-york/my-component/my-component.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react'
-import { MyComponent } from './my-component'
+import type { Meta, StoryObj } from "@storybook/react";
+import { MyComponent } from "./my-component";
 
 const meta = {
-  title: 'Registry/MyComponent',
+  title: "Registry/MyComponent",
   component: MyComponent,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'secondary'],
+      control: "select",
+      options: ["default", "secondary"],
     },
   },
-} satisfies Meta<typeof MyComponent>
+} satisfies Meta<typeof MyComponent>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Hello World',
+    children: "Hello World",
   },
-}
+};
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary Variant',
+    variant: "secondary",
+    children: "Secondary Variant",
   },
-}
+};
 ```
 
 #### 3. Storybookの起動
@@ -726,12 +733,14 @@ npm run storybook
 ### registryディレクトリと通常のコンポーネントの違い
 
 #### registryディレクトリのコンポーネント
+
 - **目的**: 他のプロジェクトへの配布
 - **パス**: `@/registry/[style]/[component]`
 - **ビルド**: `shadcn build` でJSONファイル化
 - **インポート**: 常に `@/registry` パスを使用
 
 #### 通常のNext.jsコンポーネント
+
 - **目的**: プロジェクト内での使用
 - **パス**: `@/components/ui/[component]`
 - **ビルド**: Next.jsの通常のビルドプロセス
@@ -777,6 +786,7 @@ npm run storybook
 ```
 
 #### src pattern を使用しない場合
+
 ```json
 {
   "name": "data-table",
@@ -817,6 +827,7 @@ npm run storybook
 ```
 
 #### src pattern を使用しない場合
+
 ```json
 "files": [
   {
