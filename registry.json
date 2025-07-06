@@ -16,6 +16,20 @@
       ],
       "dependencies": ["@tabler/icons-react"],
       "registryDependencies": ["button", "tooltip"]
+    },
+    {
+      "name": "code",
+      "type": "registry:component",
+      "title": "Code",
+      "description": "A component for displaying formatted code with syntax highlighting and language icons",
+      "files": [
+        {
+          "path": "src/registry/new-york/code/code.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": ["@tabler/icons-react"],
+      "registryDependencies": ["copy-button"]
     }
   ]
 }

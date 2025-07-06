@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "code",
+  "type": "registry:component",
+  "title": "Code",
+  "description": "A component for displaying formatted code with syntax highlighting and language icons",
+  "dependencies": ["@tabler/icons-react"],
+  "registryDependencies": ["copy-button"],
+  "files": [
+    {
+      "path": "src/registry/new-york/code/code.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport {\n  IconFile,\n  IconFileTypeJs,\n  IconFileTypeJsx,\n  IconFileTypeTs,\n  IconFileTypeTsx,\n} from \"@tabler/icons-react\";\nimport * as React from \"react\";\nimport { CopyButton } from \"../copy-button/copy-button\";\n\ninterface CodeProps extends React.HTMLAttributes<HTMLElement> {\n  code: string;\n  highlightedCode?: string;\n  language?: string;\n  title?: string;\n  showCopyButton?: boolean;\n}\n\nfunction getLanguageIcon(language?: string): React.ReactNode {\n  switch (language?.toLowerCase()) {\n    case \"js\":\n    case \"javascript\":\n      return <IconFileTypeJs />;\n    case \"jsx\":\n      return <IconFileTypeJsx />;\n    case \"ts\":\n    case \"typescript\":\n      return <IconFileTypeTs />;\n    case \"tsx\":\n      return <IconFileTypeTsx />;\n    default:\n      return <IconFile />;\n  }\n}\n\nexport function Code({\n  code,\n  highlightedCode,\n  language,\n  title,\n  showCopyButton = true,\n  className,\n  ...props\n}: CodeProps) {\n  return (\n    <figure\n      data-rehype-pretty-code-figure=\"\"\n      className={cn(\"relative\", className)}\n      {...props}\n    >\n      {(title || showCopyButton) && (\n        <div className=\"mb-2 flex items-center justify-between\">\n          {title ? (\n            <figcaption\n              className=\"flex items-center gap-2 text-sm text-muted-foreground [&_svg]:size-4 [&_svg]:opacity-70\"\n              data-language={language}\n            >\n              {getLanguageIcon(language)}\n              <span className=\"font-medium\">{title}</span>\n            </figcaption>\n          ) : (\n            <div></div> \n          )}\n          \n          {showCopyButton && (\n            <CopyButton \n              value={code} \n              className=\"relative top-0 right-0 z-10 size-7\"\n            />\n          )}\n        </div>\n      )}\n      \n      <div className=\"relative\">\n        <pre\n          className={cn(\n            \"max-h-96 overflow-auto rounded-lg bg-muted p-4 text-sm\"\n          )}\n        >\n          {highlightedCode ? (\n            <div dangerouslySetInnerHTML={{ __html: highlightedCode }} />\n          ) : (\n            <code className=\"font-mono\">{code}</code>\n          )}\n        </pre>\n      </div>\n    </figure>\n  );\n}\n",
+      "type": "registry:component"
+    }
+  ]
+}
