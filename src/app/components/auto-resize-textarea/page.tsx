@@ -1,9 +1,9 @@
 "use client";
 
-import { AutoResizeTextArea } from "@/registry/new-york/auto-resize-textarea/auto-resize-textarea";
+import { AutoResizeTextarea } from "@/registry/new-york/auto-resize-textarea/auto-resize-textarea";
 import { useState } from "react";
 
-export default function AutoResizeTextAreaPage() {
+export default function AutoResizeTextareaPage() {
   const [value, setValue] = useState("");
 
   return (
@@ -14,7 +14,7 @@ export default function AutoResizeTextAreaPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Default</h2>
           <div className="border rounded-lg p-4">
-            <AutoResizeTextArea
+            <AutoResizeTextarea
               value={value}
               onChange={setValue}
               placeholder="Type something and see the textarea grow..."
@@ -25,7 +25,7 @@ export default function AutoResizeTextAreaPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4">With Border</h2>
           <div className="border rounded-lg p-4 bg-muted/50">
-            <AutoResizeTextArea
+            <AutoResizeTextarea
               value={value}
               onChange={setValue}
               placeholder="This textarea has a border background..."
@@ -36,7 +36,7 @@ export default function AutoResizeTextAreaPage() {
         <div>
           <h2 className="text-xl font-semibold mb-4">Disabled</h2>
           <div className="border rounded-lg p-4 bg-muted/20">
-            <AutoResizeTextArea
+            <AutoResizeTextarea
               value="This textarea is disabled"
               onChange={() => {}}
               disabled

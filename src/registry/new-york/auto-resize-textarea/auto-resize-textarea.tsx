@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 const MAX_TEXTAREA_HEIGHT = 100;
 const MIN_TEXTAREA_HEIGHT = 32;
 
-interface AutoResizeTextAreaProps {
+interface AutoResizeTextareaProps {
   value: string;
   onChange: (value: string) => void;
   onSubmit?: () => void;
@@ -11,7 +11,7 @@ interface AutoResizeTextAreaProps {
   placeholder?: string;
 }
 
-export const AutoResizeTextArea: React.FC<AutoResizeTextAreaProps> = ({
+export const AutoResizeTextarea: React.FC<AutoResizeTextareaProps> = ({
   value,
   onChange,
   disabled = false,

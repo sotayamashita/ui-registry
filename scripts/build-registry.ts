@@ -18,6 +18,7 @@ interface RegistryItem {
   dependencies?: string[];
   registryDependencies?: string[];
   cssVars?: Record<string, unknown>;
+  categories?: string[];
 }
 
 interface Registry {
@@ -108,6 +109,71 @@ const registryTemplate: Registry = {
           target: "components/ui/auto-resize-textarea.tsx",
         },
       ],
+    },
+    {
+      name: "chat",
+      type: "registry:block",
+      title: "AI Chat System",
+      description:
+        "AI assistant chat interface with streaming, tool calling, and Markdown support",
+      files: [
+        {
+          path: "src/registry/new-york/blocks/chat/page.tsx",
+          type: "registry:page",
+          target: "app/chat/page.tsx",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/components/chat.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/components/message.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/components/chat-input.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/components/stream-message.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/components/message-list.tsx",
+          type: "registry:component",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/hooks/use-chat.ts",
+          type: "registry:hook",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/lib/mock.ts",
+          type: "registry:lib",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/types/chat-types.ts",
+          type: "registry:file",
+          target: "types/chat.ts",
+        },
+        {
+          path: "src/registry/new-york/blocks/chat/styles/scrollbar.css",
+          type: "registry:file",
+          target: "styles/chat-scrollbar.css",
+        },
+      ],
+      dependencies: ["lucide-react", "react-markdown", "remark-gfm"],
+      registryDependencies: [
+        "button",
+        "switch",
+        "scroll-area",
+        "accordion",
+        "badge",
+        "card",
+        "separator",
+        "tooltip",
+        "auto-resize-textarea",
+      ],
+      categories: ["chat", "ai", "messaging", "blocks"],
     },
   ],
 };
