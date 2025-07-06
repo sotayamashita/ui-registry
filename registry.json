@@ -43,6 +43,18 @@
         }
       ],
       "registryDependencies": ["button", "collapsible", "separator"]
+    },
+    {
+      "name": "auto-resize-textarea",
+      "type": "registry:component",
+      "title": "Auto Resize TextArea",
+      "description": "A textarea component that automatically adjusts its height based on content",
+      "files": [
+        {
+          "path": "src/registry/new-york/auto-resize-textarea/auto-resize-textarea.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
