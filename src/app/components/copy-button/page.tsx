@@ -5,7 +5,7 @@ import { CopyButton } from "@/registry/new-york/copy-button/copy-button";
 
 export default function CopyButtonPreview() {
   return (
-    <div className="container mx-auto p-8">
+    <div>
       <h1 className="text-3xl font-bold mb-8">Copy Button</h1>
       <div className="space-y-8">
         <div className="border rounded-lg p-8 relative">

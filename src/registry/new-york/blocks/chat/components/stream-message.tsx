@@ -1,4 +1,4 @@
-import { Loader2 } from "lucide-react";
+import { IconLoader2 } from "@tabler/icons-react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -98,7 +98,7 @@ export const StreamMessage: React.FC<StreamMessageProps> = ({
         </ReactMarkdown>
       </div>
       {isStreaming && (
-        <Loader2 className="inline-block size-3 ml-1 animate-spin text-muted-foreground" />
+        <IconLoader2 className="inline-block size-3 ml-1 animate-spin text-muted-foreground" />
       )}
     </div>
   );

@@ -10,16 +10,16 @@ import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CopyButton } from "@/registry/new-york/copy-button/copy-button";
 import {
-  AlertCircle,
-  ArrowLeft,
-  ArrowRight,
-  Hammer,
-  Loader2,
-  Origami,
-  ThumbsDown,
-  ThumbsUp,
-  User,
-} from "lucide-react";
+  IconAlertCircle,
+  IconArrowLeft,
+  IconArrowRight,
+  IconHammer,
+  IconLoader2,
+  IconRobotFace,
+  IconThumbDown,
+  IconThumbUp,
+  IconUser,
+} from "@tabler/icons-react";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -28,14 +28,12 @@ import { StreamMessage } from "./stream-message";
 
 interface MessageProps {
   message: MessageType;
-  streamMode?: boolean;
   onThumbsUp?: (messageId: string) => void;
   onThumbsDown?: (messageId: string) => void;
 }
 
 export const Message: React.FC<MessageProps> = ({
   message,
-  streamMode = false,
   onThumbsUp,
   onThumbsDown,
 }) => {
@@ -43,11 +41,11 @@ export const Message: React.FC<MessageProps> = ({
     const size = "size-4";
     switch (message.role) {
       case "user":
-        return <User className={size} />;
+        return <IconUser className={size} />;
       case "assistant":
-        return <Origami className={size} />;
+        return <IconRobotFace className={size} />;
       case "tool":
-        return <Hammer className={size} />;
+        return <IconHammer className={size} />;
     }
   };
 
@@ -70,7 +68,7 @@ export const Message: React.FC<MessageProps> = ({
         <div className="flex-1 min-w-0 translate-y-0.5">
           {message.isCancelled && (
             <div className="flex items-center gap-2 mb-2 text-destructive">
-              <AlertCircle className="size-4" />
+              <IconAlertCircle className="size-4" />
               <span className="text-sm font-medium">Request cancelled</span>
             </div>
           )}
@@ -85,7 +83,7 @@ export const Message: React.FC<MessageProps> = ({
                     {message.toolInvocations[0]?.state === "call" &&
                       !message.toolInvocations[0]?.result && (
                         <Badge variant="secondary" className="text-xs">
-                          <Loader2 className="size-3 mr-1 animate-spin" />
+                          <IconLoader2 className="size-3 mr-1 animate-spin" />
                           Running
                         </Badge>
                       )}
@@ -106,7 +104,7 @@ export const Message: React.FC<MessageProps> = ({
                             variant="outline"
                             className="text-blue-600 dark:text-blue-400"
                           >
-                            <ArrowRight className="size-3 mr-1" />
+                            <IconArrowRight className="size-3 mr-1" />
                             INPUT
                           </Badge>
                           <span className="text-xs text-muted-foreground">
@@ -142,7 +140,7 @@ export const Message: React.FC<MessageProps> = ({
                                 variant="outline"
                                 className="text-green-600 dark:text-green-400"
                               >
-                                <ArrowLeft className="size-3 mr-1" />
+                                <IconArrowLeft className="size-3 mr-1" />
                                 OUTPUT
                               </Badge>
                               <span className="text-xs text-muted-foreground">
@@ -188,7 +186,7 @@ export const Message: React.FC<MessageProps> = ({
                           className="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                           title="Thumbs up"
                         >
-                          <ThumbsUp className="size-4 text-gray-500 hover:text-gray-700" />
+                          <IconThumbUp className="size-4 text-gray-500 hover:text-gray-700" />
                         </button>
                       )}
                       {onThumbsDown && (
@@ -197,7 +195,7 @@ export const Message: React.FC<MessageProps> = ({
                           className="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                           title="Thumbs down"
                         >
-                          <ThumbsDown className="size-4 text-gray-500 hover:text-gray-700" />
+                          <IconThumbDown className="size-4 text-gray-500 hover:text-gray-700" />
                         </button>
                       )}
                     </>

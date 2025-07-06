@@ -62,7 +62,7 @@ export function Button({
 
   return (
     <TooltipProvider>
-      <div className="container mx-auto p-8">
+      <div>
         <h1 className="text-3xl font-bold mb-8">Code Component</h1>
         <div className="space-y-8">
           <div className="border rounded-lg p-8">

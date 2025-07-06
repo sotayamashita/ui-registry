@@ -187,7 +187,7 @@ export default function ComponentPreview({
     );
 
     return (
-      <div className="container mx-auto p-8">
+      <div>
         <h1 className="text-3xl font-bold mb-8">{params.component}</h1>
         <div className="border rounded-lg p-8">
           <Component />
@@ -221,7 +221,7 @@ export default function ComponentPreview({
     );
 
     return (
-      <div className="container mx-auto p-8">
+      <div>
         <h1 className="text-3xl font-bold mb-8">{params.component}</h1>
         <div className="border rounded-lg p-8">
           <Component />

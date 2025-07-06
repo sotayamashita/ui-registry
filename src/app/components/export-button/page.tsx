@@ -5,7 +5,7 @@ import { ExportButton } from "@/registry/new-york/export-button/export-button";
 
 export default function ExportButtonPreview() {
   return (
-    <div className="container mx-auto p-8">
+    <div>
       <h1 className="text-3xl font-bold mb-8">Export Button</h1>
       <div className="space-y-8">
         <div className="border rounded-lg p-8 relative">

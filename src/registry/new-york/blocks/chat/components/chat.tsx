@@ -94,7 +94,6 @@ export const Chat: React.FC<ChatProps> = ({
             <Message
               key={message.id}
               message={message}
-              streamMode={streamMode}
               onThumbsUp={onThumbsUp}
               onThumbsDown={onThumbsDown}
             />

@@ -67,7 +67,7 @@ export function Code({
             <div />
           )}
 
-          {showCopyButton && (
+          {showExportButton && (
             <ExportButton
               value={code}
               fileName={`${title || "code"}.${language || "txt"}`}

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AutoResizeTextarea } from "@/registry/new-york/auto-resize-textarea/auto-resize-textarea";
-import { ArrowUp, Loader2, X } from "lucide-react";
+import { IconArrowUp, IconLoader2, IconX } from "@tabler/icons-react";
 import React from "react";
 
 interface ChatInputProps {
@@ -52,12 +52,12 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
   const getButtonIcon = () => {
     if (isCancelling) {
-      return <Loader2 className="animate-spin" />;
+      return <IconLoader2 className="animate-spin" />;
     }
     if (isLoading) {
-      return <X />;
+      return <IconX />;
     }
-    return <ArrowUp />;
+    return <IconArrowUp />;
   };
 
   const getButtonClassName = () => {

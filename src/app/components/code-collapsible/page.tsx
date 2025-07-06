@@ -354,7 +354,7 @@ export default greet;`;
 
   return (
     <TooltipProvider>
-      <div className="container mx-auto p-8">
+      <div>
         <h1 className="text-3xl font-bold mb-8">Code Collapsible Wrapper</h1>
         <div className="space-y-12">
           <div className="border rounded-lg p-8">
