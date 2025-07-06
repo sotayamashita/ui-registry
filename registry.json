@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ui-registry",
+  "homepage": "https://localhost:3000",
+  "items": [
+    {
+      "name": "copy-button",
+      "type": "registry:component",
+      "title": "Copy Button",
+      "description": "A button component with clipboard functionality and visual feedback",
+      "files": [
+        {
+          "path": "src/registry/new-york/copy-button/copy-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": ["@tabler/icons-react"],
+      "registryDependencies": ["button", "tooltip"]
+    }
+  ]
+}
