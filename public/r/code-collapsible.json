@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "code-collapsible-wrapper",
+  "name": "code-collapsible",
   "type": "registry:component",
-  "title": "Code Collapsible Wrapper",
-  "description": "A collapsible wrapper component for code blocks with expand/collapse functionality",
+  "title": "Code Collapsible",
+  "description": "A collapsible component for code blocks with expand/collapse functionality",
   "registryDependencies": ["button", "collapsible", "separator"],
   "files": [
     {
-      "path": "src/registry/new-york/code-collapsible-wrapper/code-collapsible-wrapper.tsx",
+      "path": "src/registry/new-york/code-collapsible/code-collapsible.tsx",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport * as React from \"react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/components/ui/collapsible\";\nimport { Separator } from \"@/components/ui/separator\";\n\nexport function CodeCollapsible({\n  className,\n  children,\n  ...props\n}: React.ComponentProps<typeof Collapsible>) {\n  const [isOpened, setIsOpened] = React.useState(false);\n\n  return (\n    <Collapsible\n      open={isOpened}\n      onOpenChange={setIsOpened}\n      className={cn(\"group/collapsible relative md:-mx-4\", className)}\n      {...props}\n    >\n      <CollapsibleTrigger asChild>\n        <div className=\"absolute top-1.5 right-9 z-10 flex items-center\">\n          <Button\n            variant=\"ghost\"\n            size=\"sm\"\n            className=\"text-muted-foreground h-7 rounded-md px-2\"\n          >\n            {isOpened ? \"Collapse\" : \"Expand\"}\n          </Button>\n          <Separator orientation=\"vertical\" className=\"mx-1.5 !h-4\" />\n        </div>\n      </CollapsibleTrigger>\n      <CollapsibleContent\n        forceMount\n        className=\"relative mt-6 overflow-hidden data-[state=closed]:max-h-64 [&>figure]:mt-0 [&>figure]:md:!mx-0\"\n      >\n        {children}\n      </CollapsibleContent>\n      <CollapsibleTrigger className=\"from-code/70 to-code text-muted-foreground absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg bg-gradient-to-b text-sm group-data-[state=open]/collapsible:hidden\">\n        {isOpened ? \"Collapse\" : \"Expand\"}\n      </CollapsibleTrigger>\n    </Collapsible>\n  );\n}",
       "type": "registry:component"
     }
