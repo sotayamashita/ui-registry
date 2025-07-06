@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "export-button",
+  "type": "registry:component",
+  "title": "Export Button",
+  "description": "A button component with file export functionality and automatic MIME type detection",
+  "dependencies": ["@tabler/icons-react", "mime"],
+  "registryDependencies": ["button", "tooltip"],
+  "files": [
+    {
+      "path": "src/registry/new-york/export-button/export-button.tsx",
+      "content": "import { Button } from \"@/components/ui/button\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\nimport { cn } from \"@/lib/utils\";\nimport { IconFileDownload } from \"@tabler/icons-react\";\nimport mime from \"mime\";\nimport * as React from \"react\";\n\ninterface ExportButtonProps extends React.ComponentProps<typeof Button> {\n  value: string;\n  fileName: string;\n}\n\nconst EXPORT_TIMEOUT_MS = 2000;\n\nconst exportAsFile = (code: string, filename: string): void => {\n  const mimeType = mime.getType(filename) || \"text/plain\";\n  const blob = new Blob([code], { type: mimeType });\n  const url = URL.createObjectURL(blob);\n  const a = document.createElement(\"a\");\n  a.href = url;\n  a.download = filename;\n  document.body.appendChild(a);\n  a.click();\n  document.body.removeChild(a);\n  URL.revokeObjectURL(url);\n};\n\nexport function ExportButton({\n  value,\n  fileName,\n  className,\n  variant = \"ghost\",\n  ...props\n}: ExportButtonProps) {\n  const [tooltipOpen, setTooltipOpen] = React.useState(false);\n  const [hasExported, setHasExported] = React.useState(false);\n  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);\n\n  const handleExport = React.useCallback((): void => {\n    exportAsFile(value, fileName);\n    setHasExported(true);\n    setTooltipOpen(true);\n    \n    if (timeoutRef.current) {\n      clearTimeout(timeoutRef.current);\n    }\n    \n    timeoutRef.current = setTimeout(() => {\n      setHasExported(false);\n      setTooltipOpen(false);\n    }, EXPORT_TIMEOUT_MS);\n  }, [value, fileName]);\n\n  const tooltipText = React.useMemo(\n    () => hasExported ? `Exported as ${fileName}` : `Export as ${fileName}`,\n    [hasExported, fileName]\n  );\n\n  React.useEffect(() => {\n    return () => {\n      if (timeoutRef.current) {\n        clearTimeout(timeoutRef.current);\n      }\n    };\n  }, []);\n\n  return (\n    <Tooltip open={tooltipOpen} onOpenChange={setTooltipOpen}>\n      <TooltipTrigger asChild>\n        <Button\n          data-slot=\"export-button\"\n          size=\"icon\"\n          variant={variant}\n          className={cn(\n            \"bg-code absolute top-3 right-2 z-10 size-7 hover:opacity-100 focus-visible:opacity-100\",\n            className,\n          )}\n          onClick={handleExport}\n          aria-label={tooltipText}\n          {...props}\n        >\n          <span className=\"sr-only\">Export</span>\n          <IconFileDownload stroke={1.5} />\n        </Button>\n      </TooltipTrigger>\n      <TooltipContent>\n        <span>{tooltipText}</span>\n      </TooltipContent>\n    </Tooltip>\n  );\n}",
+      "type": "registry:component",
+      "target": "components/ui/export-button.tsx"
+    }
+  ]
+}

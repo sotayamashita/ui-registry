@@ -8,6 +8,7 @@ import {
 } from "@tabler/icons-react";
 import * as React from "react";
 import { CopyButton } from "../copy-button/copy-button";
+import { ExportButton } from "../export-button/export-button";
 
 interface CodeProps extends React.HTMLAttributes<HTMLElement> {
   code: string;
@@ -15,6 +16,7 @@ interface CodeProps extends React.HTMLAttributes<HTMLElement> {
   language?: string;
   title?: string;
   showCopyButton?: boolean;
+  showExportButton?: boolean;
 }
 
 function getLanguageIcon(language?: string): React.ReactNode {
@@ -39,8 +41,9 @@ export function Code({
   highlightedCode,
   language,
   title,
-  showCopyButton = true,
   className,
+  showCopyButton = true,
+  showExportButton = false,
   ...props
 }: CodeProps) {
   return (
@@ -62,6 +65,14 @@ export function Code({
           ) : (
             // Empty div to maintain flex layout
             <div />
+          )}
+
+          {showCopyButton && (
+            <ExportButton
+              value={code}
+              fileName={`${title || "code"}.${language || "txt"}`}
+              className="relative top-0 right-0 z-10 size-7"
+            />
           )}
 
           {showCopyButton && (

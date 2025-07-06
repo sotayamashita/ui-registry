@@ -73,6 +73,21 @@
       ]
     },
     {
+      "name": "export-button",
+      "type": "registry:component",
+      "title": "Export Button",
+      "description": "A button component with file export functionality and automatic MIME type detection",
+      "files": [
+        {
+          "path": "src/registry/new-york/export-button/export-button.tsx",
+          "type": "registry:component",
+          "target": "components/ui/export-button.tsx"
+        }
+      ],
+      "dependencies": ["@tabler/icons-react", "mime"],
+      "registryDependencies": ["button", "tooltip"]
+    },
+    {
       "name": "chat",
       "type": "registry:block",
       "title": "AI Chat System",

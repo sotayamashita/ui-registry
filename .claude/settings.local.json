@@ -12,6 +12,7 @@
       "mcp__deepwiki__ask_question",
       "Bash(find:*)",
       "Bash(npx shadcn:*)",
+      "Bash(npm run build:registry:*)",
       "WebFetch(domain:ui.shadcn.com)"
     ]
   },
