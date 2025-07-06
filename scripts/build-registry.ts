@@ -17,7 +17,7 @@ interface RegistryItem {
   files: RegistryFile[];
   dependencies?: string[];
   registryDependencies?: string[];
-  cssVars?: Record<string, any>;
+  cssVars?: Record<string, unknown>;
 }
 
 interface Registry {
@@ -27,10 +27,10 @@ interface Registry {
   items: RegistryItem[];
 }
 
-// 環境変数からベースURLを取得（デフォルトは localhost:3000）
+// Get base URL from environment variable (default: localhost:3000)
 const BASE_URL = process.env.REGISTRY_BASE_URL || "http://localhost:3000";
 
-// レジストリテンプレートを定義
+// Define registry template
 const registryTemplate: Registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "ui-registry",
@@ -112,7 +112,7 @@ const registryTemplate: Registry = {
   ],
 };
 
-// registry.jsonを生成
+// Generate registry.json
 writeFileSync(
   join(__dirname, "../registry.json"),
   JSON.stringify(registryTemplate, null, 2),
