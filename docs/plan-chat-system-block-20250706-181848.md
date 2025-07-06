@@ -2,14 +2,14 @@
 
 ## 概要
 
-`/Users/samyamashita/Projects/01_work/my-app/components/chat` 以下の既存のchat componentsを、shadcn/ui blocks構造 (`src/registry/new-york/blocks/chat/`) に移植します。
+`components/chat` 以下の既存のchat componentsを、shadcn/ui blocks構造 (`src/registry/new-york/blocks/chat/`) に移植します。
 
 ## 現在の構造分析
 
 ### 既存ファイル構成
 
 ```
-/Users/samyamashita/Projects/01_work/my-app/components/chat/
+/components/chat/
 ├── README.md                  # 包括的なドキュメント
 ├── auto-resize-textarea.tsx   # 【既に切り出し済み】
 ├── chat-input.tsx             # 入力エリア + アクションボタン
