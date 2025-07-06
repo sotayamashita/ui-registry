@@ -20,8 +20,6 @@ export const Chat: React.FC<ChatProps> = ({
   onChange,
   streamMode = false,
   onStreamModeChange,
-  useLLM = false,
-  onUseLLMChange,
   onThumbsUp,
   onThumbsDown,
 }) => {
@@ -68,16 +66,6 @@ export const Chat: React.FC<ChatProps> = ({
               id="stream-mode"
               checked={streamMode}
               onCheckedChange={onStreamModeChange}
-            />
-          </div>
-          <div className="flex items-center gap-2">
-            <label htmlFor="use-llm" className="text-sm font-medium">
-              Use Real LLM
-            </label>
-            <Switch
-              id="use-llm"
-              checked={useLLM}
-              onCheckedChange={onUseLLMChange}
             />
           </div>
         </div>

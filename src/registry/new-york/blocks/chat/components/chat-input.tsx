@@ -70,13 +70,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="py-4 border rounded-lg shadow-md">
-      <AutoResizeTextarea
-        value={value}
-        onChange={onChange}
-        onSubmit={handleSubmit}
-        disabled={disabled || isLoading || isCancelling}
-        placeholder={placeholder}
-      />
+      <div className="px-4">
+        <AutoResizeTextarea
+          value={value}
+          onChange={onChange}
+          onSubmit={handleSubmit}
+          disabled={disabled || isLoading || isCancelling}
+          placeholder={placeholder}
+        />
+      </div>
       <div className="flex items-center px-4">
         <Button
           type={isLoading ? "button" : "submit"}

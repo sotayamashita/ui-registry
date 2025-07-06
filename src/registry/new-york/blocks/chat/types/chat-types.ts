@@ -28,8 +28,6 @@ export interface ChatProps {
   onChange?: (value: string) => void;
   streamMode?: boolean;
   onStreamModeChange?: (enabled: boolean) => void;
-  useLLM?: boolean;
-  onUseLLMChange?: (enabled: boolean) => void;
   onThumbsUp?: (messageId: string) => void;
   onThumbsDown?: (messageId: string) => void;
 }
