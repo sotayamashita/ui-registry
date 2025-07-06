@@ -1,8 +1,20 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "ui-registry",
-  "homepage": "https://localhost:3000",
+  "homepage": "http://localhost:3000",
   "items": [
+    {
+      "name": "index",
+      "type": "registry:style",
+      "dependencies": [
+        "tw-animate-css",
+        "class-variance-authority",
+        "@tabler/icons-react"
+      ],
+      "registryDependencies": ["utils"],
+      "files": [],
+      "cssVars": {}
+    },
     {
       "name": "copy-button",
       "type": "registry:component",
@@ -11,7 +23,8 @@
       "files": [
         {
           "path": "src/registry/new-york/copy-button/copy-button.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/ui/copy-button.tsx"
         }
       ],
       "dependencies": ["@tabler/icons-react"],
@@ -25,11 +38,12 @@
       "files": [
         {
           "path": "src/registry/new-york/code/code.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/ui/code.tsx"
         }
       ],
       "dependencies": ["@tabler/icons-react"],
-      "registryDependencies": ["copy-button"]
+      "registryDependencies": ["http://localhost:3000/r/copy-button.json"]
     },
     {
       "name": "code-collapsible",
@@ -39,7 +53,8 @@
       "files": [
         {
           "path": "src/registry/new-york/code-collapsible/code-collapsible.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/ui/code-collapsible.tsx"
         }
       ],
       "registryDependencies": ["button", "collapsible", "separator"]
@@ -52,7 +67,8 @@
       "files": [
         {
           "path": "src/registry/new-york/auto-resize-textarea/auto-resize-textarea.tsx",
-          "type": "registry:component"
+          "type": "registry:component",
+          "target": "components/ui/auto-resize-textarea.tsx"
         }
       ]
     }
