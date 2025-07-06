@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ModeSwitcher } from "./mode-switcher";
 import { Button } from "./ui/button";
 
 const Nav = [
@@ -34,6 +35,11 @@ export function SiteHeader() {
                 </Button>
               ))}
             </nav>
+          </div>
+
+          {/* Right side: Mode switcher */}
+          <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+            <ModeSwitcher />
           </div>
         </div>
       </div>
