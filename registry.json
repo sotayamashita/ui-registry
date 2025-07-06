@@ -30,6 +30,19 @@
       ],
       "dependencies": ["@tabler/icons-react"],
       "registryDependencies": ["copy-button"]
+    },
+    {
+      "name": "code-collapsible",
+      "type": "registry:component",
+      "title": "Code Collapsible",
+      "description": "A collapsible component for code blocks with expand/collapse functionality",
+      "files": [
+        {
+          "path": "src/registry/new-york/code-collapsible/code-collapsible.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": ["button", "collapsible", "separator"]
     }
   ]
 }
